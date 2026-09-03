@@ -1,16 +1,54 @@
-const numeroSenha = document.queryselector('parametro-senha_texto')
+const numeroSenha = document.querySelector('.parametro-senha__texto')
+const campoSenha = document.querySelector('#campo-senha')
+
+
+campoSenha.value = 'batata23'
+let letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+//minusculas, numeros e simbolos'
+
+
 
 
 tamanhoSenha = 8
-numeroSenha.textContext = tamanhoSenha;
+numeroSenha.textContent = tamanhoSenha;
 
 
-const botoes = document.querySelectorAll('.parametro-senha_botao')
+const botoes = document.querySelectorAll('.parametro-senha__botao')
 
+
+// pega o 1°botao = -
 botoes[0].onclick = diminuir;
-
+// funçao diminuir
 function diminuir(){
-    tamanhoSenha--;
-    numeroSenha.textContext = tamanhoSenha;
+   // diminui de 1 em 1 e mostra na tela
+   tamanhoSenha--;
+   numeroSenha.textContent = tamanhoSenha;
+   geraSenha()
+}
 
+
+// BOTAO DE AUMENTAR
+// pega o 1°botao = +
+botoes[1].onclick = AUMENTAR;
+// funçao AUMENTAR
+function AUMENTAR(){
+   // aumenta de 1 em 1 e mostra na tela
+   tamanhoSenha++;
+   numeroSenha.textContent = tamanhoSenha;
+   geraSenha()
+}
+
+
+//FUNÇÂO DECRIAR A SENHA ALEATÒRIA
+geraSenha()
+
+function geraSenha(){
+    let senha = ''
+    //LOOP - Repetições 
+    for(let i = 0; i < tamanhoSenha; i++){
+        let numeroAleatorio = Math.random() * 26;
+        numeroAleatorio = Math.floor(numeroAleatorio)
+        senha = senha + letrasMaiusculas[numeroAleatorio]
+    }
+    campoSenha.value = senha;
 }
