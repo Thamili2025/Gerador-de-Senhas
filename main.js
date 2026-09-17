@@ -1,18 +1,20 @@
 const numeroSenha = document.querySelector('.parametro-senha__texto')
 const campoSenha = document.querySelector('#campo-senha')
 
+const forcaSenha = document.querySelector(".forca")
 
 campoSenha.value = 'batata23'
 let letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 //minusculas, numeros e simbolos'
-
-
-
-
 tamanhoSenha = 8
 numeroSenha.textContent = tamanhoSenha;
 
 
+const checkbox = document.querySelectorAll('.checkbox')
+
+for(let i = 0; i < checkbox.length; i++){
+    checkbox[i].onlicl = geraSenha;
+      }
 const botoes = document.querySelectorAll('.parametro-senha__botao')
 
 
@@ -51,4 +53,13 @@ function geraSenha(){
         senha = senha + letrasMaiusculas[numeroAleatorio]
     }
     campoSenha.value = senha;
+    classificarSenha()
+}
+
+// Função  para classificar senha
+function classificarSenha(){
+     
+    if(tamanhoSenha > 11){
+        forcaSenha.classList.add('forte')
+    }
 }
